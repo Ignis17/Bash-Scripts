@@ -5,7 +5,8 @@ Convenient shell scripts for everyday use, written in bash.
 ## Bash
 * up.sh
 
-```Fully updates & upgrades Debian system packages```
+```Up.sh is a tool that automates the update procedure for Debian and Ubuntu based
+Linux systems.```
 
 * compile.sh
 
