@@ -12,11 +12,12 @@ echo
 echo "________________________________________________________"
 echo " Files in $PWD :"
 echo
-for files in $PWD'*';
+
+for files in *;
 do
-	ls -a $files
-	echo
-done
+	echo $files
+done 
+
 echo "________________________________________________________"
 echo "Please enter the name of the file you'd like to compile:"
 
