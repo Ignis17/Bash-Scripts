@@ -62,6 +62,7 @@ _EOF_
 echo "_________________________________________________________________________________________________"
 echo "* This is a tool that automates the update procedure for Debian and Ubuntu based Linux systems. *"
 echo "_________________________________________________________________________________________________"
+echo
 
 # Update and clean:
 
