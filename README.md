@@ -1,6 +1,6 @@
 Bourne-Again shell scripts
 =
-**Convenient shell scripts for everyday use, written in bash.
+**Convenient shell scripts for everyday use, written in bash.**
 
 ## Bash
 * up.sh:
