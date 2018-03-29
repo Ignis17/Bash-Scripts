@@ -1,5 +1,5 @@
 Bourne-Again shell scripts
-=
+=============
 Convenient shell scripts for everyday use, written in bash.
 
 ## Bash
