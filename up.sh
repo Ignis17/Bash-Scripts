@@ -20,6 +20,7 @@ sudo apt-get dist-upgrade -yy
 }
 
 clean() {
+
 echo "*****************"
 echo "** Cleaning up **"
 echo "*****************"
@@ -57,9 +58,10 @@ _EOF_
 
 # Execution.
 
-# Tell 'em who we are...
-
-echo "Up -- Debian/Ubuntu Update Tool (Version 1.0)"
+# Displays this message once executed
+echo "_________________________________________________________________________________________________"
+echo "* This is a tool that automates the update procedure for Debian and Ubuntu based Linux systems. *"
+echo "_________________________________________________________________________________________________"
 
 # Update and clean:
 
