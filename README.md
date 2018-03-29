@@ -2,7 +2,7 @@ Bourne-Again shell scripts
 =
 **Convenient shell scripts for everyday use, written in bash.**
 
-## Bash
+## Bash Scripts
 * up.sh:
 >This a tool that automates the update procedure for Debian and Ubuntu based Linux systems.
 
