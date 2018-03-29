@@ -3,16 +3,83 @@
 # Created: 03/25/2018 
 # Update & upgrade linux environment
 
+# Set BASH to quit script and exit on errors:
+
+set -e
+
+# Functions:
+
+update() {
+
 echo "*************************"
 echo "** Looking for updates **"
 echo "*************************"
-echo "Checking for permissions:"
-sudo ls >/dev/null  # Before a command is executed, its input and output may be
-                    # redirected using a special notation interpreted by the shell.
-sudo apt update
-sudo apt dist-upgrade -yqq
-sudo apt-get autoremove -yqq
-sudo apt-get autoclean -qq
+sudo apt-get update
+sudo apt-get dist-upgrade -yy
+
+}
+
+clean() {
+echo "*****************"
+echo "** Cleaning up **"
+echo "*****************"
+sudo apt-get autoremove -yy
+sudo apt-get autoclean
+
+}
+
+leave() {
+
 echo "*******************************"
 echo "** System updates completed! **"
 echo "*******************************"
+exit
+
+}
+
+up-help() {
+
+cat << _EOF_
+ Up is a tool that automates the update procedure for Debian and Ubuntu based
+ Linux systems.
+ Commands:
+    up = full system update.
+    Running "up" with no options will update the apt cache and then perform a
+    full distribution update automatically.
+    up --clean = full system update with cleanup.
+    Adding the "--clean" option will invoke the apt commands to search for and
+    remove locally cached packages that are no longer in the repositories and
+    remove orphaned packages that are no longer needed by programs.
+    up --help = shows this help page.
+_EOF_
+
+}
+
+# Execution.
+
+# Tell 'em who we are...
+
+echo "Up -- Debian/Ubuntu Update Tool (Version 1.0)"
+
+# Update and clean:
+
+if [ "$1" == "--clean" ]; then
+    update
+    clean
+    leave
+fi
+
+if [ "$1" == "--help" ]; then
+    up-help
+    exit
+fi
+
+# Check for invalid argument
+
+if  [ -n "$1"  ]; then
+    echo "Up Error: Invalid argument. Try 'up --help' for more info." >&2
+    exit 1
+fi
+
+update
+leave
