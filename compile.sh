@@ -1,6 +1,6 @@
 #!/bin/bash
-# Author: Joel Turbi
-# Co-Author: Eva Cedent
+# Author: Eva Cedent
+# Co-Author: Joel Turbi
 # Created: 03/26/2018
 # Description: Shell script to compile C++ file(s)
 
@@ -12,7 +12,7 @@ echo
 echo "________________________________________________________"
 echo " Files in $PWD :"
 echo
-for filws in $PWD'*';
+for files in $PWD'*';
 do
 	ls -a $files
 	echo
