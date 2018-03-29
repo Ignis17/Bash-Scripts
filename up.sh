@@ -40,19 +40,20 @@ exit
 
 up-help() {
 
-cat << _EOF_
- Up is a tool that automates the update procedure for Debian and Ubuntu based
- Linux systems.
- Commands:
-    up = full system update.
-    Running "up" with no options will update the apt cache and then perform a
-    full distribution update automatically.
-    up --clean = full system update with cleanup.
-    Adding the "--clean" option will invoke the apt commands to search for and
-    remove locally cached packages that are no longer in the repositories and
-    remove orphaned packages that are no longer needed by programs.
-    up --help = shows this help page.
-_EOF_
+cat << _EOF__
+_________________________________________________________________________________
+Commands:									*
+    up = full system update.							*
+    Running "up" with no options will update the apt cache and then perform a   *
+    full distribution update automatically.					*
+    up --clean = full system update with cleanup.				*
+    Adding the "--clean" option will invoke the apt commands to search for and  *
+    remove locally cached packages that are no longer in the repositories and   *
+    remove orphaned packages that are no longer needed by programs.		*
+    up --help = shows this help page.						*
+_________________________________________________________________________________ 
+
+_EOF__
 
 }
 
