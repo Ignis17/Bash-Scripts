@@ -12,56 +12,73 @@ set -e
 
 update()
 {
+	echo
+	echo "*-*-*-*-*-*-*-*-*-*-*-*"
+	echo "*                     *"
+	echo "* Looking for updates *"
+	echo "*                     *"
+	echo "*-*-*-*-*-*-*-*-*-*-*-*"
+	echo
 
-echo "*************************"
-echo "** Looking for updates **"
-echo "*************************"
-sudo apt-get update
-sudo apt-get dist-upgrade -yy
-
+	sudo apt-get update
+	sudo apt-get dist-upgrade -yy
 }
 
 clean()
 {
+	echo
+	echo "*-*-*-*-*-*-*-*"
+	echo "*             *"
+	echo "* Cleaning up *"
+	echo "*             *"
+	echo "*-*-*-*-*-*-*-*"
+	echo
 
-echo "*****************"
-echo "** Cleaning up **"
-echo "*****************"
-
-sudo apt-get autoremove -yy
-sudo apt-get autoclean
-
-echo "*************************"
-echo "** Clean up completed! **"
-echo "*************************"
-
+	sudo apt-get autoremove -yy
+	sudo apt-get autoclean
+	
+	echo
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
+	echo "*                       *"
+	echo "*  Clean up completed!  *"
+	echo "*                       *"
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
+	echo
 }
 
 leave()
 {
-
-echo "*******************************"
-echo "** System updates completed! **"
-echo "*******************************"
-exit
-
+	echo
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+	echo "*                           *"
+	echo "* System updates completed! *"
+	echo "*                           *"
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+	echo
+	exit
 }
 
 up-help()
 {
 
-cat << _EOF__
-_________________________________________________________________________________
-Commands:									*
-    up = full system update.							*
-    Running "up" with no options will update the apt cache and then perform a   *
-    full distribution update automatically.					*
-    up --clean = full system update with cleanup.				*
-    Adding the "--clean" option will invoke the apt commands to search for and  *
-    remove locally cached packages that are no longer in the repositories and   *
-    remove orphaned packages that are no longer needed by programs.		*
-    up --help = shows this help page.						*
-_________________________________________________________________________________ 
+	cat << _EOF__
+
+	*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
+	* 										*
+	*  Commands:									*
+	*										*
+	* 1) up = full system update.							*
+	* - Running "up" with no options will update the apt cache and then perform a   *
+	*   full distribution update automatically.					*
+	*										*	
+	* 2) up --clean = full system update with cleanup.				*
+	* - Adding the "--clean" option will invoke the apt commands to search for and  *
+	*   remove locally cached packages that are no longer in the repositories and   *
+	*   remove orphaned packages that are no longer needed by programs.		*
+	*										*
+	* 3) up --help = shows this help page.						*
+	*										*
+	*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_* 
 
 _EOF__
 
@@ -70,29 +87,37 @@ _EOF__
 # Execution.
 
 # Displays this message once executed
-echo "_________________________________________________________________________________________________"
-echo "| This is a tool that automates the update procedure for Debian and Ubuntu based Linux systems. |"
-echo "|_______________________________________________________________________________________________|"
-echo
+menu()
+{
+	echo
+	echo "*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*"
+	echo "|                                                                                               |"
+	echo "*       This tool automates the update process for Debian & Ubuntu based Linux systems.         *"
+	echo "|_______________________________________________________________________________________________|"
+	echo "*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*"
+	echo
+}
 
 # Update and clean:
 
 if [ "$1" == "--clean" ]; then
-    clean
-    exit
+	menu
+	clean
+	exit
 fi
 
 if [ "$1" == "--help" ]; then
-    up-help
-    exit
+	up-help
+	exit
 fi
 
 # Check for invalid argument
 
 if  [ -n "$1"  ]; then
-    echo "Up Error: Invalid argument. Try 'up --help' for more info." >&2
-    exit 1
+	echo "Up Error: Invalid argument. Try 'up --help' for more info." >&2
+	exit 1
 fi
 
+menu
 update
 leave
