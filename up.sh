@@ -1,7 +1,8 @@
 #!/bin/bash
 # Author: Joel Turbi
 # Created: 03/25/2018 
-# Update & upgrade linux environment
+# Update & upgrade linux environment 
+# Ported from Joe Collins www.ezeelinux.com (GNU/General Public License version 2.0)
 
 # Set BASH to quit script and exit on errors:
 
