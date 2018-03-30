@@ -9,7 +9,8 @@ set -e
 
 # Functions:
 
-update() {
+update()
+{
 
 echo "*************************"
 echo "** Looking for updates **"
@@ -19,17 +20,24 @@ sudo apt-get dist-upgrade -yy
 
 }
 
-clean() {
+clean()
+{
 
 echo "*****************"
 echo "** Cleaning up **"
 echo "*****************"
+
 sudo apt-get autoremove -yy
 sudo apt-get autoclean
 
+echo "*************************"
+echo "** Clean up completed! **"
+echo "*************************"
+
 }
 
-leave() {
+leave()
+{
 
 echo "*******************************"
 echo "** System updates completed! **"
@@ -38,7 +46,8 @@ exit
 
 }
 
-up-help() {
+up-help()
+{
 
 cat << _EOF__
 _________________________________________________________________________________
@@ -61,16 +70,15 @@ _EOF__
 
 # Displays this message once executed
 echo "_________________________________________________________________________________________________"
-echo "* This is a tool that automates the update procedure for Debian and Ubuntu based Linux systems. *"
-echo "_________________________________________________________________________________________________"
+echo "| This is a tool that automates the update procedure for Debian and Ubuntu based Linux systems. |"
+echo "|_______________________________________________________________________________________________|"
 echo
 
 # Update and clean:
 
 if [ "$1" == "--clean" ]; then
-    update
     clean
-    leave
+    exit
 fi
 
 if [ "$1" == "--help" ]; then
