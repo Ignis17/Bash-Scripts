@@ -4,8 +4,12 @@
 # Created: 03/26/2018
 # Description: Shell script to compile C++ file(s)
 
+# Set Bash to quit script and exit on errors.
+set -e
+
 menu()
 {
+	echo
 	echo "  ****************************************************"
 	echo "  * Welcome to the C++ compiler & executable program *"
 	echo "  ****************************************************"
@@ -23,41 +27,59 @@ directory()
 	do
 		echo $files
 	done 
-	echo "________________________________________________________""
+	echo "________________________________________________________"
 }
-echo "Please enter the name of the file you'd like to compile:"
 
-read name # Reads input from keyboard.
-fileName=${name%.*}.out #Reads file name from left to right up until the '.' 
+compile()
+{
+	directory
+	echo
+	echo "Please enter the name of the file you'd like to compile:"
 
-g++ -o $fileName $name # compiles file & creates execuatable object.
+	read name # Reads input from keyboard.
+	fileName=${name%.*}.out #Reads file name from left to right up until the '.' 
 
-echo "Your file $fileName has been created."
-echo
-echo "Would you like to compile your code (Y/N) ?"
+	g++ -o $fileName $name # compiles file & creates execuatable object.
 
-read answer # Reads input from keyboard.
+	echo "Your file $fileName has been created."
+	echo
+	echo "Would you like to compile your code (Y/N) ?"
+	read answer # Reads input from keyboard.
 
-# Conditional statement - Does the user want to run / execute program.
-if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
+	# Conditional statement - Does the user want to run / execute program.
+	if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
 	echo "_______________________________________________________"
 	echo "         ***********************************"
 	echo "         * Here is the output of $fileName *"
-	echo "         ***********************************"
+	echo "         ************************.o***********"
 	./$fileName
 	echo
 	echo "_______________________________________________________"
-	#Performs a mild clean-up by deleting '.out' file based on users choice
-	echo "Would you like to remove the $fileName (Y/N) ?"
-	read input
-
-	if [ "$input" = "y" ] || [ " $input " = "Y" ]; then
-		rm -f $fileName
-	elif [ "$input" = "n" ] || [ "$input" = "N" ]; then
-		echo "Goodbye!, Until Next Time :)"
+	else
+		leave
 		exit
 	fi
-elif [ "$answer" = "n" ] || [ "$answer" = "N" ]; then
+}
+
+clean()
+{
+	echo ".out file has been deleted."
+	rm -f *.out
+}
+
+leave()
+{
 	echo "Goodbye!, Until Next Time :)"
 	exit
+}
+if [ "$1" == "--clean" ]; then
+	clean
+	leave
 fi
+
+if [ -n "$1" ]; then
+	echo "Invalid argument."
+	exit 1
+fi
+menu
+compile
