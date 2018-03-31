@@ -76,9 +76,9 @@ clean()
 	echo -ne '\n'
 	rm -f *.out
 	echo
-	echo "*-*-*-*-*-*-*-*-*"
-	echo "* File removed  *"
-	echo "*-*-*-*-*-*-*-*-*"
+	echo "*-*-*-*-*-*-*-*-*-*-*"
+	echo "* File was removed. *"
+	echo "*-*-*-*-*-*-*-*-*-*-*"
 
 	exit
 }
@@ -86,9 +86,16 @@ clean()
 leave()
 {
 	echo
-	echo "*-*-*-*-*-*-*-*-*-*-*"
-	echo "*  Exiting compiler *"
-	echo "*-*-*-*-*-*-*-*-*-*-*"
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
+	echo "*  Exiting compiler...  *"
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
+	echo
+	echo -ne '#####                     (33%)\r'
+	sleep 1
+	echo -ne '#############             (66%)\r'
+	sleep 1
+	echo -ne '#######################   (100%)\r'
+	echo -ne '\n'
 	exit
 }
 if [ "$1" == "--clean" ]; then
