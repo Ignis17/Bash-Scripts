@@ -4,21 +4,27 @@
 # Created: 03/26/2018
 # Description: Shell script to compile C++ file(s)
 
-echo "  ****************************************************"
-echo "  * Welcome to the C++ compiler & executable program *"
-echo "  ****************************************************"
-echo
+menu()
+{
+	echo "  ****************************************************"
+	echo "  * Welcome to the C++ compiler & executable program *"
+	echo "  ****************************************************"
+	echo
+}
+
 # Lists the files in the current directory
-echo "________________________________________________________"
-echo " Files in $PWD :"
-echo
+directory()
+{
+	echo "________________________________________________________"
+	echo " Files in $PWD :"
+	echo
 
-for files in *;
-do
-	echo $files
-done 
-
-echo "________________________________________________________"
+	for files in *;
+	do
+		echo $files
+	done 
+	echo "________________________________________________________""
+}
 echo "Please enter the name of the file you'd like to compile:"
 
 read name # Reads input from keyboard.
