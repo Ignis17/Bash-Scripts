@@ -4,7 +4,7 @@ Bourne-Again shell scripts
 
 ## Scripts for Debian/Ubuntu based environment 
 - *up.sh:*
->This a tool that automates the update procedure for Debian and Ubuntu based Linux systems.
+>This tool automates the update procedure for Debian and Ubuntu based Linux systems.
 
 - *compile.sh:*
 >Shell script to compile C++ file(s).
