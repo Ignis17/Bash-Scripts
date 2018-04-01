@@ -14,9 +14,7 @@ update()
 {
 	echo
 	echo "*-*-*-*-*-*-*-*-*-*-*-*"
-	echo "*                     *"
 	echo "* Looking for updates *"
-	echo "*                     *"
 	echo "*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
 
@@ -27,21 +25,28 @@ update()
 clean()
 {
 	echo
-	echo "*-*-*-*-*-*-*-*"
-	echo "*             *"
-	echo "* Cleaning up *"
-	echo "*             *"
-	echo "*-*-*-*-*-*-*-*"
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
+	echo "*     Cleaning up...    *"
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
-
-	sudo apt-get autoremove -yy
-	sudo apt-get autoclean
 	
+	sudo apt-get autoremove -yqq
+	sudo apt-get autoclean -yqq
+	BAR='######'  
+	# this is full bar, mine is 25 chars
+	for i in {1..6}; do
+	       	echo -ne "\r${BAR:0:$i}" # print $i chars of $BAR from 0 position
+		sleep .1
+		echo
+	done
+	for i in {6..1}; do
+		echo -ne "\r${BAR:0:$i}"
+		sleep .1
+		echo
+	done
 	echo
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
-	echo "*                       *"
 	echo "*  Clean up completed!  *"
-	echo "*                       *"
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
 }
@@ -50,9 +55,7 @@ leave()
 {
 	echo
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
-	echo "*                           *"
 	echo "* System updates completed! *"
-	echo "*                           *"
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
 	exit
