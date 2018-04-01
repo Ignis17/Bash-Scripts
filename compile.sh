@@ -26,6 +26,12 @@ directory()
 	echo "*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*"
 }
 
+run()
+{
+	./*.out
+	exit
+}
+
 compile()
 {
 	menu
@@ -47,7 +53,7 @@ compile()
 	if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
 	echo "*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*"
 	echo "         *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
-	echo "         * Here is the output of $fileName *"
+	echo "         | Here is the output of $fileName  "
 	echo "         *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
 	./$fileName
@@ -68,17 +74,20 @@ clean()
 	echo "*  Removing files with the extension .out   *"
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
-	echo -ne '#####                     (33%)\r'
+	echo -ne '##########                             (15%)\r'
 	sleep 1
-	echo -ne '#############             (66%)\r'
+	echo -ne '################                       (33%)\r'
 	sleep 1
-	echo -ne '#######################   (100%)\r'
+	echo -ne '#########################              (66%)\r'
+	sleep 1
+	echo -ne '###################################   (100%)\r'
 	echo -ne '\n'
 	rm -f *.out
 	echo
-	echo "*-*-*-*-*-*-*-*-*-*-*"
-	echo "* File was removed. *"
-	echo "*-*-*-*-*-*-*-*-*-*-*"
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+	echo "*        File has been removed.             *"
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+	echo
 
 	exit
 }
@@ -90,19 +99,25 @@ leave()
 	echo "*  Exiting compiler...  *"
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
-	echo -ne '#####                     (33%)\r'
+	echo -ne '########                         (15%)\r'
 	sleep 1
-	echo -ne '#############             (66%)\r'
+	echo -ne '##############                   (33%)\r'
 	sleep 1
-	echo -ne '#######################   (100%)\r'
+	echo -ne '########################         (66%)\r'
+	sleep 1
+	echo -ne '##############################  (100%)\r'
 	echo -ne '\n'
 	exit
 }
+
 if [ "$1" == "--clean" ]; then
 	clean
 	leave
 fi
 
+if [ "$1" == "--run" ]; then
+	run
+fi
 
 if [ -n "$1" ]; then
 	echo "Invalid argument."
