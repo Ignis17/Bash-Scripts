@@ -37,16 +37,16 @@ compile()
 	menu
 	directory
 	echo
-	echo " Please enter the name of the file you'd like to compile:"
+	echo "Please enter the name of the file you'd like to compile:"
 
 	read name # Reads input from keyboard.
 	fileName=${name%.*}.out #Reads file name from left to right up until the '.' 
 
 	g++ -o $fileName $name # compiles file & creates execuatable object.
 
-	echo " Your file $fileName has been created."
+	echo "Your file $fileName has been created."
 	echo
-	echo " Would you like to compile your code (Y/N) ?"
+	echo "Would you like to compile your code (Y/N) ?"
 	read answer # Reads input from keyboard.
 
 	# Conditional statement - Does the user want to run / execute program.
