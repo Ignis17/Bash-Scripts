@@ -9,31 +9,10 @@
 set -e
 
 # Functions:
-
-update()
+bar()
 {
-	echo
-	echo "*-*-*-*-*-*-*-*-*-*-*-*"
-	echo "* Looking for updates *"
-	echo "*-*-*-*-*-*-*-*-*-*-*-*"
-	echo
-
-	sudo apt-get update
-	sudo apt-get dist-upgrade -yy
-}
-
-clean()
-{
-	echo
-	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
-	echo "*     Cleaning up...    *"
-	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
-	echo
-	
-	sudo apt-get autoremove -yqq
-	sudo apt-get autoclean -yqq
 	BAR='######'  
-	# this is full bar, mine is 25 chars
+	# this is full bar, mine is 6 chars
 	for i in {1..6}; do
 	       	echo -ne "\r${BAR:0:$i}" # print $i chars of $BAR from 0 position
 		sleep .1
@@ -44,6 +23,31 @@ clean()
 		sleep .1
 		echo
 	done
+}
+
+update()
+{
+	echo
+	echo "*-*-*-*-*-*-*-*-*-*-*-*"
+	echo "* Looking for updates *"
+	echo "*-*-*-*-*-*-*-*-*-*-*-*"
+	echo
+	sudo apt-get update -qq
+	sudo apt-get dist-upgrade -yqq
+	bar
+}
+
+clean()
+{
+	echo
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
+	echo "*     Cleaning up...    *"
+	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
+	echo
+	bar
+	sudo apt-get autoremove -yqq
+	sudo apt-get autoclean -yqq
+
 	echo
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo "*  Clean up completed!  *"
