@@ -9,6 +9,7 @@
 set -e
 
 # Functions:
+
 bar()
 {
 	BAR='######'  
@@ -32,6 +33,7 @@ update()
 	echo "* Looking for updates *"
 	echo "*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
+	bar
 	sudo apt-get update -qq
 	sudo apt-get dist-upgrade -yqq
 	bar
@@ -47,7 +49,7 @@ clean()
 	bar
 	sudo apt-get autoremove -yqq
 	sudo apt-get autoclean -yqq
-
+	bar
 	echo
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo "*  Clean up completed!  *"
