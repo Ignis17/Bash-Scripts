@@ -33,8 +33,8 @@ update()
 	echo "* Looking for updates *"
 	echo "*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
-	bar
 	sudo apt-get update -qq
+	bar
 	sudo apt-get dist-upgrade -yqq
 	bar
 }
