@@ -34,9 +34,7 @@ update()
 	echo "*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
 	sudo apt-get update -qq
-	bar
 	sudo apt-get dist-upgrade -yqq
-	bar
 }
 
 clean()
@@ -46,10 +44,8 @@ clean()
 	echo "*     Cleaning up...    *"
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
-	bar
 	sudo apt-get autoremove -yqq
 	sudo apt-get autoclean -yqq
-	bar
 	echo
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo "*  Clean up completed!  *"
@@ -129,4 +125,5 @@ fi
 
 menu
 update
+bar
 leave
