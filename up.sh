@@ -12,7 +12,7 @@ set -e
 
 bar()
 {
-	BAR='######'  
+	BAR='!@#$%^'  
 	# this is full bar, mine is 6 chars
 	for i in {1..6}; do
 	       	echo -ne "\r${BAR:0:$i}" # print $i chars of $BAR from 0 position
@@ -32,11 +32,9 @@ update()
 	echo "*-*-*-*-*-*-*-*-*-*-*-*"
 	echo "* Looking for updates *"
 	echo "*-*-*-*-*-*-*-*-*-*-*-*"
-	echo
+        echo
 	sudo apt-get update -qq
-	bar
 	sudo apt-get dist-upgrade -yqq
-	bar
 }
 
 clean()
@@ -46,10 +44,8 @@ clean()
 	echo "*     Cleaning up...    *"
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo
-	bar
 	sudo apt-get autoremove -yqq
 	sudo apt-get autoclean -yqq
-	bar
 	echo
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo "*  Clean up completed!  *"
@@ -110,8 +106,11 @@ menu()
 # Update and clean:
 
 if [ "$1" == "--clean" ]; then
+	sudo echo
 	menu
 	clean
+	bar
+	echo
 	exit
 fi
 
@@ -127,6 +126,8 @@ if  [ -n "$1"  ]; then
 	exit 1
 fi
 
+sudo echo
 menu
 update
+bar
 leave
