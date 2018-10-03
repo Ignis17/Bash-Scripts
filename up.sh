@@ -46,6 +46,7 @@ clean()
 	echo
 	sudo apt-get autoremove -yqq
 	sudo apt-get autoclean -yqq
+	bar
 	echo
 	echo "*-*-*-*-*-*-*-*-*-*-*-*-*"
 	echo "*  Clean up completed!  *"
@@ -109,7 +110,6 @@ if [ "$1" == "--clean" ]; then
 	sudo echo
 	menu
 	clean
-	bar
 	echo
 	exit
 fi
