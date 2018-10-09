@@ -11,3 +11,6 @@ Bourne-Again shell scripts
 
 - *pathadder.sh*
 >Creates a bin folder under user's home directory & appends the location to PATH environmental variable.
+
+- *passwd_gen.sh*
+>Simple password generator
