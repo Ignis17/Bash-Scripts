@@ -8,7 +8,9 @@ push(){
 	git add .
 	git commit -a -m "$msg"
 	git push -u origin master
-	echo "Changes have been uploaded to *GitHub*"
+	echo "****************************************"
+	echo "* Changes have been uploaded to GitHub *"
+	echo "****************************************"
 }
 menu(){
 	echo
