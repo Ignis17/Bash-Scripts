@@ -11,3 +11,6 @@ Bourne-Again shell scripts
 
 - *passwd_gen.sh*
 >Simple password generator
+
+- *gitup.sh:*
+>Automates the process of uploading changes to github with one simple call.
