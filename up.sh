@@ -1,7 +1,7 @@
 #!/bin/bash
 # Author: Joel Turbi
-# Created: 03/25/2018 
-# Update & upgrade linux environment 
+# Created: 03/25/2018
+# Update & upgrade linux environment
 # Ported from Joe Collins www.ezeelinux.com (GNU/General Public License version 2.0)
 
 # Set BASH to quit script and exit on errors:
@@ -12,7 +12,7 @@ set -e
 
 bar()
 {
-	BAR='!@#$%^'  
+	BAR='!@#$%^'
 	# this is full bar, mine is 6 chars
 	for i in {1..6}; do
 	       	echo -ne "\r${BAR:0:$i}" # print $i chars of $BAR from 0 position
@@ -76,7 +76,7 @@ up-help()
 	* 1) up = full system update.							*
 	* - Running "up" with no options will update the apt cache and then perform a   *
 	*   full distribution update automatically.					*
-	*										*	
+	*										*
 	* 2) up -c = Perform system cleanup.			                	*
 	* - Adding the "-c" option will invoke the apt commands to search for and       *
 	*   remove locally cached packages that are no longer in the repositories and   *
@@ -84,7 +84,7 @@ up-help()
 	*										*
 	* 3) up -h = shows this help page.						*
 	*										*
-	*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_* 
+	*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
 
 _EOF__
 
