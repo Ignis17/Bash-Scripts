@@ -13,7 +13,8 @@ set -e
 # Stages all files by adding them and committing them to Github
 push(){
 	push_s
-	echo "E.g. to add everything to the staging area, enter "." or name of the file."
+	echo
+	echo "E.g. to add everything to the staging area, enter "\"."\" or name of the file."
 	echo
 	echo "Enter name of file to commit:"
 	read file
@@ -35,13 +36,30 @@ menu(){
 	echo "| This script automates the process of submitting changes to github  |"
 	echo "*====================================================================*"
 	echo
+	echo "1) Check for recent changes made in local repository."
+	echo "2) Start staging and commit process."
+	echo "3) Pull recent changes from remote repository."
+	echo "4) Exit."
+	read -p "Enter your choice: " reply
+	case $reply in
+		"1")
+			push_s ;;
+		"2")
+			push ;;
+		"3")
+			pull ;;
+		"4")
+			echo "Goodbye!"
+			exit 0;;
+		*) echo "Invalid choice"; exit 1;;
+	esac
 }
 
 # Checks for changes made to current repository:
 push_s(){
-	echo "*=====================+*"
-	echo "| Checking for changes |"
-	echo "*=====================+*"
+	echo "*============================*"
+	echo "| Checking for local changes |"
+	echo "*============================*"
 	echo
 	git status
 	echo
@@ -50,23 +68,36 @@ push_s(){
 	echo "*===========================*"
 }	
 
+pull(){
+	echo "*=============================*"
+	echo "| Checking for recent changes |"
+	echo "*=============================*"
+	echo
+	git pull
+	echo 
+	echo "*==================================*"
+	echo "| Done checking for recent changes |"
+	echo "*==================================*"
+
+}
+
 # Help menu, instructs users for special commands/options.
 push-help(){
 cat << _EOF__
 
 Here is a list of commands to try with this script, along with a description of what it does:
 
-	***********************************************
-	* 1) push -u = Staging and committing changes *
-	***********************************************
+	*************************************************
+	* 1) push -p = Pulls recent chances from remote *
+	*************************************************
 _EOF__
 
 }
 
 # Executes staging and committing of files:
-if [ "$1" == "-u" ]; then
+if [ "$1" == "-p" ]; then
 	menu
-	push
+	pull
 	exit
 fi
 
@@ -84,4 +115,3 @@ fi
 
 # Function calls:
 menu
-push-help
