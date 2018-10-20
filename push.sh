@@ -78,40 +78,7 @@ pull(){
 	echo "*==================================*"
 	echo "| Done checking for recent changes |"
 	echo "*==================================*"
-
 }
-
-# Help menu, instructs users for special commands/options.
-push-help(){
-cat << _EOF__
-
-Here is a list of commands to try with this script, along with a description of what it does:
-
-	*************************************************
-	* 1) push -p = Pulls recent chances from remote *
-	*************************************************
-_EOF__
-
-}
-
-# Executes staging and committing of files:
-if [ "$1" == "-p" ]; then
-	menu
-	pull
-	exit
-fi
-
-# Brings up help menu
-if [ "$1" == "-h" ]; then
-	push-help
-	exit
-fi
-
-# Check for invalid argument
-if  [ -n "$1"  ]; then
-	echo "Up Error: Invalid argument. Try 'up -h' for more info." >&2
-	exit 1
-fi
 
 # Function calls:
 menu
