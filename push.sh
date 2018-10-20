@@ -39,7 +39,8 @@ menu(){
 	echo "1) Check for recent changes made in local repository."
 	echo "2) Start staging and commit process."
 	echo "3) Pull recent changes from remote repository."
-	echo "4) Exit."
+	echo "4) Push commited changes to remote repository."
+	echo "5) Exit."
 	read -p "Enter your choice: " reply
 	case $reply in
 		"1")
@@ -49,6 +50,8 @@ menu(){
 		"3")
 			pull ;;
 		"4")
+			git push;;
+		"5")
 			echo "Goodbye!"
 			exit 0;;
 		*) echo "Invalid choice"; exit 1;;
