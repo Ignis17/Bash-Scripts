@@ -77,12 +77,12 @@ up-help()
 	* - Running "up" with no options will update the apt cache and then perform a   *
 	*   full distribution update automatically.					*
 	*										*	
-	* 2) up --clean = full system update with cleanup.				*
-	* - Adding the "--clean" option will invoke the apt commands to search for and  *
+	* 2) up -c = Perform system cleanup.			                	*
+	* - Adding the "-c" option will invoke the apt commands to search for and       *
 	*   remove locally cached packages that are no longer in the repositories and   *
 	*   remove orphaned packages that are no longer needed by programs.		*
 	*										*
-	* 3) up --help = shows this help page.						*
+	* 3) up -h = shows this help page.						*
 	*										*
 	*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_* 
 
@@ -106,7 +106,7 @@ menu()
 
 # Update and clean:
 
-if [ "$1" == "--clean" ]; then
+if [ "$1" == "-c" ]; then
 	sudo echo
 	menu
 	clean
@@ -114,7 +114,7 @@ if [ "$1" == "--clean" ]; then
 	exit
 fi
 
-if [ "$1" == "--help" ]; then
+if [ "$1" == "-h" ]; then
 	up-help
 	exit
 fi
@@ -122,7 +122,7 @@ fi
 # Check for invalid argument
 
 if  [ -n "$1"  ]; then
-	echo "Up Error: Invalid argument. Try 'up --help' for more info." >&2
+	echo "Up Error: Invalid argument. Try 'up -h' for more info." >&2
 	exit 1
 fi
 
