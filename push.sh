@@ -6,7 +6,6 @@
 #	Staged: the file has been added to git's version control but changes have not been committed.
 # 	Committed: the change has been committed
 
-
 # Function to automate github staging process:
 # Stages all files by adding them and committing them to Github
 push(){
@@ -30,38 +29,41 @@ menu(){
 		echo "| This script automates the process of submitting changes to github  |"
 		echo "*====================================================================*"
 		echo
+		echo "*====================================================================*"
+		cat $HOME/.gitconfig 
+		echo "*====================================================================*"
 		echo "
 		| Enter selection |
 
-		1) Check for recent changes in local repository.
-		2) Stage & commit changes from local repository.
-		3) Pull recent changes from remote repository.
-		4) Push commited changes to remote repository.
-		5) Github configuration setup.
-		6) Clone a repository by url.
+		1) Github configuration setup.
+		2) Clone a repository by url.
+		3) Check for recent changes in local repository.
+		4) Pull recent changes from remote repository.
+		5) Stage & commit changes from local repository.
+		6) Push commited changes to remote repository.
 		7) Exit.
 		"
 		read -p "Selection #: " reply
-		if [ $reply == 1 ]; then
+		if [ $reply == 3 ]; then
 			push_s
 			sleep 2
-		elif [ $reply == 2 ]; then
+		elif [ $reply == 5 ]; then
 			push
 			sleep 2
 
-		elif [ $reply == 3 ]; then
-			pull;
-			sleep 2
-
 		elif [ $reply == 4 ]; then
-			git push
-			sleep 2
-
-		elif [ $reply == 5 ]; then
-			config
+			pull
 			sleep 2
 
 		elif [ $reply == 6 ]; then
+			git push
+			sleep 2
+
+		elif [ $reply == 1 ]; then
+			config
+			sleep 2
+
+		elif [ $reply == 2 ]; then
 			echo
 			read -p "Paste url here: " url
 			git clone "$url"
