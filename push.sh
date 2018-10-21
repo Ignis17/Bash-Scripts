@@ -16,8 +16,8 @@ push(){
 	echo
 	echo "E.g. to add everything to the staging area, enter "\"."\" or name of the file."
 	echo
-	read -p "Enter name of file to commit:" file
-	read -p "Enter message to be committed:" msg
+	read -p "Enter name of file to commit: " file
+	read -p "Enter message to be committed: " msg
 	git add "$file"
 	git commit -a -m "$msg"
 	git push -u origin master
@@ -59,11 +59,13 @@ menu(){
 			config;
 			exit 0;;
 		"6")
+			echo;
 			read -p "Paste url here: " url;
 			git clone "$url";
 		       	exit 0;;
 	
 		"7")
+			echo;
 			echo "Goodbye!";
 			exit 0 ;;
 		*) echo "Invalid choice"; exit 1 ;;
