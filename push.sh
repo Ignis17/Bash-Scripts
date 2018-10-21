@@ -16,10 +16,8 @@ push(){
 	echo
 	echo "E.g. to add everything to the staging area, enter "\"."\" or name of the file."
 	echo
-	echo "Enter name of file to commit:"
-	read file
-	echo "Enter message to be committed:"
-	read msg
+	read -p "Enter name of file to commit:" file
+	read -p "Enter message to be committed:" msg
 	git add "$file"
 	git commit -a -m "$msg"
 	git push -u origin master
@@ -40,21 +38,35 @@ menu(){
 	echo "2) Start staging and commit process."
 	echo "3) Pull recent changes from remote repository."
 	echo "4) Push commited changes to remote repository."
-	echo "5) Exit."
+	echo "5) Github configuration set up."
+	echo "6) Clone a repository by url."
+	echo "7) Exit."
 	read -p "Enter your choice: " reply
 	case $reply in
 		"1")
-			push_s ;;
-		"2")
-			push ;;
-		"3")
-			pull ;;
-		"4")
-			git push;;
-		"5")
-			echo "Goodbye!"
+			push_s;
 			exit 0;;
-		*) echo "Invalid choice"; exit 1;;
+		"2")
+			push;
+			exit 0;;
+		"3")
+			pull;
+			exit 0;;
+		"4")
+			git push;
+			exit 0;;
+		"5")
+			config;
+			exit 0;;
+		"6")
+			read -p "Paste url here: " url;
+			git clone "$url";
+		       	exit 0;;
+	
+		"7")
+			echo "Goodbye!";
+			exit 0 ;;
+		*) echo "Invalid choice"; exit 1 ;;
 	esac
 }
 
@@ -81,6 +93,25 @@ pull(){
 	echo "*==================================*"
 	echo "| Done checking for recent changes |"
 	echo "*==================================*"
+}
+
+# Configures Github Enviroment to user's info.
+
+config(){
+	echo
+	echo "*=======================================*"	
+	echo "| Welcome to Github Configuration Setup |"
+	echo "*=======================================*"
+	echo
+	read -p "Enter Username: " user
+	echo 
+	read -p "Enter Email address: " email
+	echo
+	git config --global user.name "$user"
+	git config --global user.email "$email"
+	echo "*========================*"
+	echo "| Changes have been made |"
+	echo "*========================*"
 }
 
 # Function calls:
