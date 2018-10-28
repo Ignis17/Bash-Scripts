@@ -6,17 +6,19 @@
 
 # Choice menu.
 menu(){
+	echo
 	echo "	Make a selection: "
 	echo
-	echo "	- 1) Kill/stop predetermined processes(E.g. Apache2,Cassandra, Mongodb, MySQL)."
-	echo "	- 2) Stop predetermined processes(E.g. Apache2, Cassandra, Mongodb, MySQL), from auto-starting."
-	echo "	- 3) Re-enable predetermined processes to auto-start at boot-up."
-	echo "	- 4) Enter name of process you'd like to kill/stop."
-	echo "	- 5) Exit."
+	echo "- 1) Kill/stop predetermined processes(E.g. Apache2,Cassandra, Mongodb, MySQL)."
+	echo "- 2) Stop predetermined processes(E.g. Apache2, Cassandra, Mongodb, MySQL), from auto-starting."
+	echo "- 3) Re-enable predetermined processes to auto-start at boot-up."
+	echo "- 4) Enter name of process you'd like to kill/stop."
+	echo "- 5) Exit."
 	echo
 }
 
 auto-enable(){
+	echo
 	echo "Starting..."
 	sudo systemctl enable cassandra
 	sudo systemctl start cassandra
@@ -27,9 +29,11 @@ auto-enable(){
 	sudo systemctl enable mysql
 	sudo systemctl start mysql
 	echo "Done."
+	echo
 }
 
 auto-disable(){
+	echo
 	echo "Starting..."
 	sudo systemctl stop cassandra
 	sudo systemctl disable cassandra
@@ -40,6 +44,7 @@ auto-disable(){
 	sudo systemctl stop mysql
 	sudo systemctl disable mysql
 	echo "Done."
+	echo
 }
 
 # function to perform user's selection
@@ -55,7 +60,7 @@ stop(){
 		2) auto-disable;;
 		3) auto-enable ;;
 		4) read -p "Enter name of process: " choice; /etc/init.d/"$choice" stop;;
-		5) echo "Done"; exit 0;;
+		5) echo;echo "Done";echo; exit 0;;
 		*) echo "Invalid selection. Try again!"; exit 1;;
 	esac
 }
