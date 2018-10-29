@@ -13,7 +13,7 @@ Bourne-Again shell scripts
 >Simple password generator
 
 - *push.sh:*
->Automates the process of uploading changes to github with an interactive menu. 
+>Automates the process of using github with an interactive menu. 
 
 - *stop.sh*
  >Allows the user to kill background processes by using systemclt tool.
