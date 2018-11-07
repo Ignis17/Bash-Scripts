@@ -6,15 +6,15 @@
 
 create(){
   # Creates bin folder under user's directory
-  mkdir $HOME/bin
+  mkdir $HOME/bin;
   # Add bin folder to Enviromental PATH variable
   echo "export PATH=\"\$PATH:~/bin\"" >> $HOME/.bashrc && echo "Done!"
 }
 
 undo(){
   # Searches for string in given file and deletes the line.
-  rm -rf $HOME/bin
-  sed -i "/export PATH=\"\$PATH:\$HOME\/bin\"/d" $HOME/.bashrc && echo "Done!"
+  rm -rf $HOME/bin;
+  sed -i "/\$PATH:~\\/bin/d" $HOME/.bashrc && echo "Done!"
 }
 
 menu(){
@@ -31,13 +31,13 @@ menu(){
     "
     read -p "Selection #: " reply
     if [ $reply == 1 ]; then
-      create
+      create;
       sleep 2
     elif [ $reply == 2 ]; then
-      undo
+      undo;
       sleep 2
     elif [ $reply == 3 ]; then
-      echo "Shutting down..."
+      echo "Shutting down...";
       exit 0
     else
       echo "Invalid selection."
