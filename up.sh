@@ -7,7 +7,7 @@
 # Set BASH to quit script and exit on errors:
 
 set -e
-
+echo -e "\e[91m"
 # Functions:
 
 bar()
@@ -131,3 +131,4 @@ menu
 update
 bar
 leave
+echo -e "\e[0m"
