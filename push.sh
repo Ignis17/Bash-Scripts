@@ -21,6 +21,49 @@ push(){
 	echo "| Changes have been uploaded to GitHub |"
 }
 
+# Checks for changes made to current repository:
+push_s(){
+	echo
+	echo "| Checking for local changes |"
+	echo
+	git status
+	echo
+	echo "| Done checking for changes |"
+}
+
+pull(){
+	echo "| Checking for recent changes |"
+	echo
+	git pull
+	echo
+	echo "| Done checking for recent changes |"
+}
+
+# Configures Github Enviroment to user's info.
+
+config(){
+	echo
+	echo "*=======================================*"
+	echo "| Welcome to Github Configuration Setup |"
+	echo "*=======================================*"
+	echo
+	read -p "Enter Username: " user
+	echo
+	read -p "Enter Email address: " email
+	echo
+	git config --global user.name "$user"
+	git config --global user.email "$email"
+	echo "| Changes have been made |"
+}
+
+# Deletes branch name locally & remotely
+delete(){
+	echo
+	read -p "Enter the name of branch you'd like to delete: " branch
+	git branch -D $branch
+	git push origin --delete $branch
+	echo "Done."
+}
 # Displays this message when script is run for the first time.
 menu(){
 	while [[ $reply != 7 ]]; do
@@ -30,14 +73,14 @@ menu(){
 		echo "*====================================================================*"
 		echo
 		echo "*====================================================================*"
-		cat $HOME/.gitconfig 
+		cat $HOME/.gitconfig
 		echo "*====================================================================*"
 		echo "
 		| Enter selection |
 
 		1) Github configuration setup.
 		2) Clone a repository by url.
-		3) Check for recent changes in local repository.
+		3) Check for recent changes terminated local repository.
 		4) Pull recent changes from remote repository.
 		5) Stage & commit changes from local repository.
 		6) Push commited changes to remote repository.
@@ -78,41 +121,6 @@ menu(){
 			sleep 1
 		fi
 	done
-}
-
-# Checks for changes made to current repository:
-push_s(){
-	echo
-	echo "| Checking for local changes |"
-	echo
-	git status
-	echo
-	echo "| Done checking for changes |"
-}
-
-pull(){
-	echo "| Checking for recent changes |"
-	echo
-	git pull
-	echo
-	echo "| Done checking for recent changes |"
-}
-
-# Configures Github Enviroment to user's info.
-
-config(){
-	echo
-	echo "*=======================================*"
-	echo "| Welcome to Github Configuration Setup |"
-	echo "*=======================================*"
-	echo
-	read -p "Enter Username: " user
-	echo
-	read -p "Enter Email address: " email
-	echo
-	git config --global user.name "$user"
-	git config --global user.email "$email"
-	echo "| Changes have been made |"
 }
 
 # Function calls:
