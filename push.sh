@@ -56,17 +56,25 @@ config(){
 	echo "| Changes have been made |"
 }
 
-# Deletes branch name locally & remotely
-delete(){
+# Deletes branch name locally
+delLocal(){
 	echo
 	read -p "Enter the name of branch you'd like to delete: " branch
 	git branch -D $branch
+	echo "Done."
+}
+
+# Deletes branch name remotely
+delRemote(){
+	echo
+	read -p "Enter the name of branch you'd like to delete: " branch
 	git push origin --delete $branch
 	echo "Done."
 }
+
 # Displays this message when script is run for the first time.
 menu(){
-	while [[ $reply != 7 ]]; do
+	while [[ $reply != 9 ]]; do
 		clear
 		echo "*====================================================================*"
 		echo "| This script automates the process of submitting changes to github  |"
@@ -84,7 +92,9 @@ menu(){
 		4) Pull recent changes from remote repository.
 		5) Stage & commit changes from local repository.
 		6) Push commited changes to remote repository.
-		7) Exit.
+		7) Delete branch locally.
+		8) Delete branch remotely.
+		9) Exit.
 		"
 		read -p "Selection #: " reply
 		if [ $reply == 3 ]; then
@@ -111,10 +121,16 @@ menu(){
 			read -p "Paste url here: " url
 			git clone "$url"
 		  sleep 2
-		elif [ $reply == 7 ]; then
+		elif [ $reply == 9 ]; then
 			echo
 			echo "Program terminated. Goodbye! :)"
 			exit 0
+		elif [ $reply == 7 ]; then
+			delLocal
+			sleep 2
+		elif [ $reply == 8 ]; then
+			delRemote
+			sleep 2
 		else
 			echo "Invalid selection."
 			echo "Try again."
